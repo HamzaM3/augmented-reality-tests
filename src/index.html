@@ -2,31 +2,26 @@
 <html>
   <head>
     <title>Instascan</title>
-    <script
-      type="text/javascript"
-      src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"
-    ></script>
   </head>
   <body>
-    <video id="preview"></video>
-    <script type="text/javascript">
-      let scanner = new Instascan.Scanner({
-        video: document.getElementById("preview"),
-      });
-      scanner.addListener("scan", function (content) {
-        console.log(content);
-      });
-      Instascan.Camera.getCameras()
-        .then(function (cameras) {
-          if (cameras.length > 0) {
-            scanner.start(cameras[0]);
-          } else {
-            console.error("No cameras found.");
-          }
-        })
-        .catch(function (e) {
-          console.error(e);
-        });
-    </script>
+    <a-scene>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder
+        position="1 0.75 -3"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+      ></a-cylinder>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#7BC8A4"
+      ></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
